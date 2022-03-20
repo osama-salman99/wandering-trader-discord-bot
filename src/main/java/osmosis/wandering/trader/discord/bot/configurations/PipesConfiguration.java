@@ -16,10 +16,12 @@ import osmosis.pipes.messages.terminating.chain.TerminablePipeChainBuilder;
 public class PipesConfiguration {
     @Bean
     public TerminablePipeChain terminablePipeChain(TerminablePipe botPipe,
-                                                   TerminablePipe nicePipe) {
+                                                   TerminablePipe nicePipe,
+                                                   TerminablePipe commandsPipe) {
         return new TerminablePipeChainBuilder()
                 .addPipe(botPipe)
                 .addPipe(nicePipe)
+                .addPipe(commandsPipe)
                 .build();
     }
 
