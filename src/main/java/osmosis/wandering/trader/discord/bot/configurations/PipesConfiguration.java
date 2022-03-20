@@ -24,6 +24,16 @@ public class PipesConfiguration {
     }
 
     @Bean
+    public TerminablePipe botPipe(BotFilter botFilter, MessageApplier emptyApplier) {
+        return new TerminatingPipe(
+                FilteredMessagePipeBuilder.builder()
+                        .addFilter(botFilter)
+                        .setApplier(emptyApplier)
+                        .build()
+        );
+    }
+
+    @Bean
     public TerminablePipe nicePipe(MessageFilter niceFilter, MessageApplier niceApplier) {
         return new NonTerminatingPipe(
                 FilteredMessagePipeBuilder.builder()
@@ -34,11 +44,11 @@ public class PipesConfiguration {
     }
 
     @Bean
-    public TerminablePipe botPipe(BotFilter botFilter, MessageApplier emptyApplier) {
+    public TerminablePipe commandsPipe(MessageFilter commandsFilter, MessageApplier commandsApplier) {
         return new TerminatingPipe(
                 FilteredMessagePipeBuilder.builder()
-                        .addFilter(botFilter)
-                        .setApplier(emptyApplier)
+                        .addFilter(commandsFilter)
+                        .setApplier(commandsApplier)
                         .build()
         );
     }
