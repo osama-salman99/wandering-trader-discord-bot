@@ -1,5 +1,7 @@
 package osmosis.wandering.trader.discord.bot.requests;
 
+import osmosis.commons.message.ProcessingMessage;
+
 public interface RequestProcessor {
-    void process(String request);
+    void process(ProcessingMessage request);
 }
