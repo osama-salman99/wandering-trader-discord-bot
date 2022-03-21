@@ -1,0 +1,23 @@
+{
+  "properties": [
+    {
+      "name": "command.prefix",
+      "type": "java.lang.String",
+      "description": "Prefix of commands (Not included in commands)."
+    },
+    {
+      "name": "command.role",
+      "type": "java.lang.String",
+      "description": "Role of users allowed to use commands."
+    },
+    {
+      "name": "request.prefix",
+      "type": "java.lang.String",
+      "description": "Prefix of requests (Not included in commands)."
+    },
+    {
+      "name": "minecraft.server.command.url",
+      "type": "java.lang.String",
+      "description": "URL of the Minecraft commands server."
+    }
+  ] }

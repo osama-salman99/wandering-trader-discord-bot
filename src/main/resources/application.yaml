@@ -1,0 +1,17 @@
+server.port: 9090
+
+spring:
+  profiles:
+    active: secret
+
+command:
+  prefix: ##
+  role: Golem
+
+request:
+  prefix: '!!'
+
+minecraft:
+  server:
+    command:
+      url: http://localhost:8080/rcon/command
