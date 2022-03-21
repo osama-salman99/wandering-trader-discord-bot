@@ -2,6 +2,7 @@ package osmosis.wandering.trader.discord.bot.services;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
@@ -19,17 +20,10 @@ public class RestService implements PostingService {
             return null;
         }
         HttpEntity<String> request = new HttpEntity<>(message);
-        try {
-            ResponseEntity<String> responseEntity = restTemplate.postForEntity(url, request, String.class);
+        ResponseEntity<String> responseEntity = restTemplate.postForEntity(url, request, String.class);
+        if (responseEntity.getStatusCode() == HttpStatus.OK) {
             return responseEntity.getBody();
-        } catch (Exception exception) {
-            String exceptionMessage = exception.getMessage();
-            logError(exceptionMessage);
-            return exceptionMessage;
         }
-    }
-
-    private void logError(String message) {
-        System.err.println(message);
+        return String.format("Response code %d: Error processing the command", responseEntity.getStatusCode().value());
     }
 }
